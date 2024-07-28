@@ -1,0 +1,83 @@
+$(document).ready(function () {
+
+  $('a[href^="#"]').click(function () {
+    var elementClick = $(this).attr("href");
+    var destination = $(elementClick).offset().top;
+    jQuery("html:not(:animated), body:not(:animated)").animate({scrollTop: destination}, 600);
+    return false;
+  });
+
+  now = new Date();
+  var perem = (24 - now.getHours()) * 3600;
+  $(".el-timer").attr("data-timer", perem);
+  $(".el-timer").TimeCircles({
+    "animation": "smooth",
+    "bg_width": 0.9,
+    "fg_width": 0.025,
+    "circle_bg_color": "#b3c6d7",
+    "time": {
+      "Days": {
+        "text": "Days",
+        "color": "#f57b28",
+        "show": false
+      },
+      "Hours": {
+        "text": "Часов",
+        "color": "#f57b28",
+        "show": true
+      },
+      "Minutes": {
+        "text": "Минут",
+        "color": "#f57b28",
+        "show": true
+      },
+      "Seconds": {
+        "text": "Секунд",
+        "color": "#f57b28",
+        "show": true
+      }
+    }
+  });
+
+  $('.slider-result').slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 250,
+    fade: true,
+    cssEase: 'linear',
+    autoplay: true,
+    autoplaySpeed: 2000
+  });
+
+  $('.slider-photo').slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 250,
+    fade: false,
+    cssEase: 'linear',
+    autoplay: true,
+    autoplaySpeed: 1500
+  });
+
+  $('.slider-rev').slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 250,
+    fade: false,
+    cssEase: 'linear',
+    adaptiveHeight: true
+  });
+
+  $('.catalog-list a.button-m').on('click', function(){
+    var th = $(this);
+    var f = th.closest('li');
+    var NameProduct = f.find('h4').text();
+    $('input[name="comment"]').val(NameProduct);
+  });
+
+
+});
+
